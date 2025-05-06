@@ -34,8 +34,7 @@ jobs:
           tf_actions_subcommand: 'init'
           tf_actions_working_dir: ${{ env.TERRAFORM_WORKING_DIR }}
         env:
-          TF_VAR_resource_group_name: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
-          TF_VAR_location: ${{ secrets.AZURE_RG_LOCATION }}
+          TF_VAR_resource_group_name: ${{ secrets.ABCD_AZURE_RESOURCE_GROUP_NAME }}
 
       - name: 'Terraform Validate'
         uses: hashicorp/terraform-github-actions@master
