@@ -49,6 +49,8 @@ jobs:
           tf_actions_version: ${{ env.TF_VERSION }}
           tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.TERRAFORM_WORKING_DIR }}
+        env:
+          TF_VAR_resource_group_name: ${{ secrets.ABCD_AZURE_RESOURCE_GROUP_NAME }}
       
       - name: Terraform Apply
         if: github.ref == 'refs/heads/develop'
@@ -57,3 +59,5 @@ jobs:
           tf_actions_version: ${{ env.TF_VERSION }}
           tf_actions_subcommand: 'apply'
           tf_actions_working_dir: ${{ env.TERRAFORM_WORKING_DIR }}
+        env:
+          TF_VAR_resource_group_name: ${{ secrets.ABCD_AZURE_RESOURCE_GROUP_NAME }}
