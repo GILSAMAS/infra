@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 env:
   DOCKER_IMAGE_NAME: mlflowformldeploy
-  DOCKER_REGISTRY_URL: "https://index.docker.io"
+  DOCKER_REGISTRY_URL: "index.docker.io"
 
 jobs: 
   build-docker-image:
