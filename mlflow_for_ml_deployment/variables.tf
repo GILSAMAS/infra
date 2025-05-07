@@ -28,7 +28,7 @@ variable "docker_registry_password" {
   type        = string
 }
 
-# variable "docker_image_name" {
-#   description = "The name of the Docker image"
-#   type        = string
-# }
+variable "docker_image_name" {
+  description = "The name of the Docker image"
+  type        = string
+}
