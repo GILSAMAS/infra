@@ -6,7 +6,7 @@ on:
       - master
   workflow_dispatch:
 env:
-  IMAGE_NAME: mlflowformldeploy
+  IMAGE_NAME: gilsama/mlflowformldeploy
   REGISTRY: "index.docker.io"
 
 jobs: 
