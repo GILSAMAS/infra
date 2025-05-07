@@ -26,7 +26,7 @@ resource "azurerm_linux_web_app" "webapp" {
   site_config {
     always_on = false
     application_stack {
-      # docker_image_name        = var.docker_image_name
+      docker_image_name        = var.docker_image_name
       docker_registry_url      = "https://index.docker.io"
       docker_registry_username = var.docker_registry_username
       docker_registry_password = var.docker_registry_password
@@ -46,7 +46,7 @@ resource "azurerm_app_service_source_control" "sourcecontrol" {
   github_action_configuration {
     generate_workflow_file = false
     container_configuration {
-      # image_name        = var.docker_image_name
+      image_name        = var.docker_image_name
       registry_url      = "https://index.docker.io"
       registry_username = var.docker_registry_username
       registry_password = var.docker_registry_password
