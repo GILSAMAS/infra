@@ -36,6 +36,8 @@ jobs:
         env:
           TF_VAR_resource_group_name: ${{ vars.ABCD_AZURE_RESOURCE_GROUP_NAME }}
           TF_VAR_location: ${{ vars.ABCD_AZURE_RG_LOCATION }}
+          TF_VAR_docker_registry_username: ${{ secrets.INFRA_DOCKER_REGISTRY_USERNAME }}
+          TF_VAR_docker_registry_password: ${{ secrets.INFRA_DOCKER_REGISTRY_PASSWORD }}
 
       - name: 'Terraform Validate'
         uses: hashicorp/terraform-github-actions@master
@@ -53,6 +55,8 @@ jobs:
         env:
           TF_VAR_resource_group_name: ${{ vars.ABCD_AZURE_RESOURCE_GROUP_NAME }}
           TF_VAR_location: ${{ vars.ABCD_AZURE_RG_LOCATION }}
+          TF_VAR_docker_registry_username: ${{ secrets.INFRA_DOCKER_REGISTRY_USERNAME }}
+          TF_VAR_docker_registry_password: ${{ secrets.INFRA_DOCKER_REGISTRY_PASSWORD }}
       
       - name: Terraform Apply
         if: github.ref == 'refs/heads/master'
@@ -64,4 +68,6 @@ jobs:
         env:
           TF_VAR_resource_group_name: ${{ vars.ABCD_AZURE_RESOURCE_GROUP_NAME }}
           TF_VAR_location: ${{ vars.ABCD_AZURE_RG_LOCATION }}
+          TF_VAR_docker_registry_username: ${{ secrets.INFRA_DOCKER_REGISTRY_USERNAME }}
+          TF_VAR_docker_registry_password: ${{ secrets.INFRA_DOCKER_REGISTRY_PASSWORD }}
           
