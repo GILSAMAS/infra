@@ -6,12 +6,18 @@ on:
       - master
   workflow_dispatch:
 env:
-  DOCKER_IMAGE_NAME: mlflowformldeploy
-  DOCKER_REGISTRY_URL: "index.docker.io"
+  IMAGE_NAME: mlflowformldeploy
+  REGISTRY: "index.docker.io"
 
 jobs: 
   build-docker-image:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,7 +28,6 @@ jobs:
       - name: Login to Docker Registry
         uses: docker/login-action@v2
         with:
-          registry: ${{ env.DOCKER_REGISTRY_URL }}
           username: ${{ secrets.INFRA_DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.INFRA_DOCKER_REGISTRY_PASSWORD }}
 
@@ -31,7 +36,7 @@ jobs:
         with:
           context: mlflow_for_ml_deployment
           push: true
-          tags: ${{ env.DOCKER_REGISTRY_URL }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
 
       
